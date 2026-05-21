@@ -122,13 +122,13 @@ Requirements for this milestone (covers brief PR 1 + PR 2 + PR 3). Each maps to 
 - [x] **XCUT-01**: Every collection, cache key, BullMQ queue name, vector namespace, and PubSub channel includes `subdomain`; cross-tenant access is impossible by construction (verified by integration test)
 - [x] **XCUT-02**: Disabling the plugin (`ENABLED_PLUGINS` excludes `ai`) does NOT break other plugins; their `trpc.ai.*` calls hit a typed shim that throws `AINotEnabledError` with a clear message
 - [ ] **XCUT-03**: A prompt-injection heuristic guard runs on user-supplied content AND on tool outputs (regex + scoring, in-house, ~80 LOC in `guardrails.ts`)
-- [ ] **XCUT-04**: `pnpm install && pnpm nx build erxes-api-shared && pnpm nx build ai_api && pnpm nx build ai_ui` succeed from a clean clone
+- [x] **XCUT-04**: `pnpm install && pnpm nx build erxes-api-shared && pnpm nx build ai_api && pnpm nx build ai_ui` succeed from a clean clone
 - [ ] **XCUT-05**: `pnpm nx test ai_api` passes with >70% line coverage on `src/modules/`; tests cover provider adapters, agent loop, tool registry scope enforcement, budget enforcement, RAG retrieve+rank, encryption round-trip
 - [ ] **XCUT-06**: Acceptance demo passes: with `ENABLED_PLUGINS=ai,sales,frontline` and an empty MongoDB, an admin can configure OpenAI → Test Connection OK → invoke Workspace Analyst → ask "How many deals are in the Qualified stage?" → see a streamed answer citing deal IDs → see one row in the audit log
 - [ ] **XCUT-07**: From inside `sales_api`, `await ctx.trpc.ai.llm.draft({ context, instruction })` works with a single import and no provider knowledge
 - [ ] **XCUT-08**: Setting a workspace budget to $0 causes the next chat call to fail with `BudgetExceededError` and a UI-friendly message
 - [ ] **XCUT-09**: `CLAUDE.md` and `AGENTS.md` updated with: `meta/aiTools.ts` extension point, new env vars (`AI_API_PORT`, `AI_UI_PORT`, `ERXES_SECRET`, `AI_DEFAULT_VECTOR_BACKEND`, `QDRANT_URL`, `AI_EMBED_CONCURRENCY`, `AI_DEFAULT_CHAT_MODEL`, `AI_DEFAULT_EMBED_MODEL`, `AI_BUDGET_DEFAULT_USD`, `AI_MAX_TOOL_STEPS`, `AI_GUARDRAILS_STRICT`), and a one-paragraph "How to add AI to your plugin" quickstart
-- [ ] **XCUT-10**: `ai_api/Dockerfile` uses `node:18.20-alpine`; `docker-compose.yml` gains an optional `qdrant` service; `.env.sample` lists every new variable
+- [x] **XCUT-10**: `ai_api/Dockerfile` uses `node:18.20-alpine`; `docker-compose.yml` gains an optional `qdrant` service; `.env.sample` lists every new variable
 
 ## v2 Requirements
 
@@ -254,13 +254,13 @@ Explicitly excluded for v1. Documented to prevent re-introduction during plannin
 | XCUT-01 | Phase 1.1 | Complete |
 | XCUT-02 | Phase 1.1 | Complete |
 | XCUT-03 | Phase 2.1 | Pending |
-| XCUT-04 | Phase 1.1 | Pending |
+| XCUT-04 | Phase 1.1 | Complete |
 | XCUT-05 | Phase 3.2 | Pending |
 | XCUT-06 | Phase 2.3 | Pending |
 | XCUT-07 | Phase 2.1 | Pending |
 | XCUT-08 | Phase 1.2 | Pending |
 | XCUT-09 | Phase 3.2 | Pending |
-| XCUT-10 | Phase 1.1 | Pending |
+| XCUT-10 | Phase 1.1 | Complete |
 
 **Coverage:**
 - v1 requirements: 84 total (PROV 6, MODL 3, LLM 6, AUDIT 6, BUDG 6, TOOL 8, AGNT 8, RAG 7, AUTO 5, PRMT 4, UI 10, HOOK 5, XCUT 10 — note: PROJECT.md's earlier "86" tally was an over-count; actual REQ-ID count is 84)

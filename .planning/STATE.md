@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Phase 1.1 context gathered
-last_updated: "2026-05-21T05:24:35.575Z"
+last_updated: "2026-05-21T05:41:58.275Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 9
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-21)
 ## Current Position
 
 Phase: 01.1 (Shared Module + Plugin Scaffolds) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-05-21
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Progress: [███░░░░░░░] 33%
 
 *Updated after each plan completion*
 | Phase 01.1 P01 | 38 | 3 tasks | 14 files |
+| Phase 01.1 P02 | 27 | 4 tasks | 24 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,9 @@ Recent decisions affecting current work:
 - PROJECT_MODE: standard (Horizontal Layers); granularity: fine
 - All 84 v1 REQ-IDs mapped to exactly one phase, no orphans
 - Two pending decisions deferred to Phase 1.2: budget strategy (Redis bucket vs MongoDB `$expr`) and `ERXES_SECRET` rotation policy (A vs B)
+- [Phase ?]: Phase 1.1 P02: ai_api Dockerfile uses node:22-alpine3.22 (monorepo standard) — D-09 ADDENDUM supersedes the original 18.20-alpine wording; unlocks modern @google/genai SDK for Phase 1.2
+- [Phase ?]: Phase 1.1 P02: docker-compose.yml was NET-NEW (no pre-existing file); created with qdrant under profiles:[ai] so default docker compose up starts nothing
+- [Phase ?]: Phase 1.1 P02: validateErxesSecret tolerates versioned multi-secret lists v1:HEX,v2:HEX at the FIRST entry — forward-compat with Phase 1.2 rotation Policy A (PITFALLS P14) without code change here
 
 ### Pending Todos
 
@@ -90,6 +94,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T05:24:31.641Z
+Last session: 2026-05-21T05:41:48.911Z
 Stopped at: Phase 1.1 context gathered
 Resume file: None

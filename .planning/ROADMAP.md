@@ -44,11 +44,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. `useAIAvailable()` hook returns `false` when `ai_ui` remote fails to load, and every documented `ai_ui` remote import in consumer code is wrapped in an `ErrorBoundary` so MF hard-fail cannot crash the host
   5. Every collection name, Redis cache key, BullMQ queue name, vector namespace, and PubSub channel pattern declared in this phase already includes a `subdomain` segment by construction (lint check passes — no shared global)
   6. `docker-compose.yml` gains an optional `qdrant` service; `.env.sample` lists `AI_API_PORT=3320`, `AI_UI_PORT=3020`, `ERXES_SECRET`, `AI_DEFAULT_VECTOR_BACKEND`, `QDRANT_URL`, `AI_EMBED_CONCURRENCY`, `AI_DEFAULT_CHAT_MODEL`, `AI_DEFAULT_EMBED_MODEL`, `AI_BUDGET_DEFAULT_USD`, `AI_MAX_TOOL_STEPS`, `AI_GUARDRAILS_STRICT`
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 
 Plans:
 - [x] 01.1-01-PLAN.md — erxes-api-shared/src/ai/ shared module (shim, encryption, redaction, tokens, providers/base, types) + preconstruct entrypoint + unit tests
-- [ ] 01.1-02-PLAN.md — backend/plugins/ai_api/ skeleton + ERXES_SECRET fail-fast validation + .env.sample + docker-compose.yml qdrant profile
+- [x] 01.1-02-PLAN.md — backend/plugins/ai_api/ skeleton + ERXES_SECRET fail-fast validation + .env.sample + docker-compose.yml qdrant profile
 - [ ] 01.1-03-PLAN.md — frontend/plugins/ai_ui/ skeleton + 6-entry MF expose surface (singleton config) + useAIAvailable hook + AiRemoteBoundary in erxes-ui/ai
 
 **UI hint**: yes
@@ -191,7 +191,7 @@ Phases execute in numeric order: 1.1 → 1.2 → 1.3 → 1.4 → 2.1 → 2.2 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1.1. Shared Module + Plugin Scaffolds | 1/3 | In Progress|  |
+| 1.1. Shared Module + Plugin Scaffolds | 2/3 | In Progress|  |
 | 1.2. Provider Config + Encryption + Budget Enforcement | 0/TBD | Not started | - |
 | 1.3. LLM API Surface + Audit Log + Observability | 0/TBD | Not started | - |
 | 1.4. AI Settings UI (Providers, Models, Budgets, Audit) | 0/TBD | Not started | - |

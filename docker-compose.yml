@@ -1,0 +1,36 @@
+# Optional dev-convenience services for the erxes monorepo.
+#
+# This file is for LOCAL DEVELOPMENT ONLY. Production deployments build each
+# plugin via its own Dockerfile (see backend/plugins/*/Dockerfile) and run
+# them under Kubernetes / Docker Swarm / Compose stacks of their own.
+#
+# All services are gated behind compose profiles so `docker compose up`
+# with no `--profile` flag starts NOTHING. Opt into a profile by passing
+# `--profile <name>` to enable just the services you need.
+#
+# Available profiles:
+#   ai  — Optional Qdrant vector store for the ai_api plugin
+#         (only used when AI_DEFAULT_VECTOR_BACKEND=qdrant). Phase 2.2 will
+#         consume this; Phase 1.1 ships the service definition so
+#         contributors can `docker compose --profile ai up -d` ahead of
+#         time without re-editing this file.
+#
+# Usage examples:
+#   docker compose --profile ai up -d qdrant      # start Qdrant only
+#   docker compose --profile ai down              # stop the ai profile
+#   docker compose --profile ai config            # validate config
+
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.13.0
+    profiles: ['ai']
+    container_name: erxes_qdrant
+    ports:
+      - '6333:6333'  # REST API
+      - '6334:6334'  # gRPC API
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  qdrant_storage:

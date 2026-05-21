@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
+status: verifying
 stopped_at: Phase 1.1 context gathered
-last_updated: "2026-05-21T05:41:58.275Z"
+last_updated: "2026-05-21T05:58:26.091Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 9
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
-  percent: 0
+  completed_plans: 3
+  percent: 11
 ---
 
 # Project State
@@ -27,10 +27,10 @@ See: .planning/PROJECT.md (updated 2026-05-21)
 
 Phase: 01.1 (Shared Module + Plugin Scaffolds) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-05-21
 
-Progress: [███████░░░] 67%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -54,6 +54,7 @@ Progress: [███████░░░] 67%
 *Updated after each plan completion*
 | Phase 01.1 P01 | 38 | 3 tasks | 14 files |
 | Phase 01.1 P02 | 27 | 4 tasks | 24 files |
+| Phase 01.1 P03 | 13 | 4 tasks | 26 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,9 @@ Recent decisions affecting current work:
 - [Phase ?]: Phase 1.1 P02: ai_api Dockerfile uses node:22-alpine3.22 (monorepo standard) — D-09 ADDENDUM supersedes the original 18.20-alpine wording; unlocks modern @google/genai SDK for Phase 1.2
 - [Phase ?]: Phase 1.1 P02: docker-compose.yml was NET-NEW (no pre-existing file); created with qdrant under profiles:[ai] so default docker compose up starts nothing
 - [Phase ?]: Phase 1.1 P02: validateErxesSecret tolerates versioned multi-secret lists v1:HEX,v2:HEX at the FIRST entry — forward-compat with Phase 1.2 rotation Policy A (PITFALLS P14) without code change here
+- [Phase ?]: Phase 01.1 P03: ai_ui MF expose surface FINAL on Day 1 (D-06) — Phases 1.4/2.3/3.2 fill placeholder modules, never the MF config
+- [Phase ?]: Phase 01.1 P03: useAIAvailable + AiRemoteBoundary live in erxes-ui/ai (D-12 bullet 14), re-exported via top-level erxes-ui barrel
+- [Phase ?]: Phase 01.1 P03: useAIAvailable uses injectable aiAvailableProbe.impl holder for tests — jest.resetModules breaks React cross-instance dispatcher with @testing-library/react
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T05:41:48.911Z
+Last session: 2026-05-21T05:58:05.223Z
 Stopped at: Phase 1.1 context gathered
 Resume file: None

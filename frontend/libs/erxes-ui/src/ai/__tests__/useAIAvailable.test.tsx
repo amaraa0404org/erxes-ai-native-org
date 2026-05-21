@@ -1,25 +1,30 @@
 /**
  * Tests for useAIAvailable — the MF-load probe hook.
  *
- * Strategy: `ai_ui/config` is an MF-served module that does not exist at
- * jest-time. We register a virtual module with `jest.mock(..., { virtual: true })`
- * so the hook's `import('ai_ui/config')` resolves predictably. Each test
- * resets modules to clear the module-scope probe cache between cases.
+ * The hook is fronted by an injectable probe (`aiAvailableProbe.impl`)
+ * so tests can swap success/failure behavior without resetting modules
+ * (which would break React's dispatcher state across the
+ * @testing-library/react boundary).
  */
-
 import { act, renderHook, waitFor } from '@testing-library/react';
 
+import {
+  aiAvailableProbe,
+  resetAIAvailableCache,
+  useAIAvailable,
+} from '../useAIAvailable';
+
+const originalProbe = aiAvailableProbe.impl;
+
+afterEach(() => {
+  aiAvailableProbe.impl = originalProbe;
+  resetAIAvailableCache();
+});
+
 describe('useAIAvailable', () => {
-  beforeEach(() => {
-    jest.resetModules();
-  });
-
   it('resolves to available=true when ai_ui/config import succeeds', async () => {
-    jest.doMock('ai_ui/config', () => ({ default: { name: 'ai' } }), {
-      virtual: true,
-    });
+    aiAvailableProbe.impl = () => Promise.resolve({ default: { name: 'ai' } });
 
-    const { useAIAvailable } = require('../useAIAvailable');
     const { result } = renderHook(() => useAIAvailable());
 
     // Initial state: loading, unknown
@@ -35,15 +40,11 @@ describe('useAIAvailable', () => {
   });
 
   it('resolves to available=false when ai_ui/config import rejects', async () => {
-    jest.doMock(
-      'ai_ui/config',
-      () => {
-        throw new Error('Module not found: ai_ui/config (remote unreachable)');
-      },
-      { virtual: true },
-    );
+    aiAvailableProbe.impl = () =>
+      Promise.reject(
+        new Error('Module not found: ai_ui/config (remote unreachable)'),
+      );
 
-    const { useAIAvailable } = require('../useAIAvailable');
     const { result } = renderHook(() => useAIAvailable());
 
     await waitFor(() => {
@@ -55,16 +56,9 @@ describe('useAIAvailable', () => {
   });
 
   it('refetch() clears the cache and re-probes', async () => {
-    // First probe: rejection
-    jest.doMock(
-      'ai_ui/config',
-      () => {
-        throw new Error('initial failure');
-      },
-      { virtual: true },
-    );
+    // First probe state: rejection
+    aiAvailableProbe.impl = () => Promise.reject(new Error('initial failure'));
 
-    const { useAIAvailable } = require('../useAIAvailable');
     const { result } = renderHook(() => useAIAvailable());
 
     await waitFor(() => {
@@ -72,22 +66,16 @@ describe('useAIAvailable', () => {
     });
     expect(result.current.available).toBe(false);
 
-    // Second probe (after refetch): success
-    jest.resetModules();
-    jest.doMock('ai_ui/config', () => ({ default: { name: 'ai' } }), {
-      virtual: true,
-    });
+    // Swap to success and refetch
+    aiAvailableProbe.impl = () => Promise.resolve({ default: { name: 'ai' } });
 
     act(() => {
       result.current.refetch();
     });
 
     await waitFor(() => {
-      // After refetch the hook re-enters the loading state once before
-      // the new probe resolves; we await loading=false again
       expect(result.current.loading).toBe(false);
+      expect(result.current.available).toBe(true);
     });
-
-    expect(result.current.available).toBe(true);
   });
 });

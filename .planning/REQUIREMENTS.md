@@ -175,16 +175,109 @@ Explicitly excluded for v1. Documented to prevent re-introduction during plannin
 
 ## Traceability
 
-(Empty — populated by the roadmapper agent during ROADMAP creation.)
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| PROV-01 | Phase 1.2 | Pending |
+| PROV-02 | Phase 1.2 | Pending |
+| PROV-03 | Phase 1.2 | Pending |
+| PROV-04 | Phase 1.2 | Pending |
+| PROV-05 | Phase 1.2 | Pending |
+| PROV-06 | Phase 1.2 | Pending |
+| MODL-01 | Phase 1.2 | Pending |
+| MODL-02 | Phase 1.4 | Pending |
+| MODL-03 | Phase 1.3 | Pending |
+| LLM-01 | Phase 1.3 | Pending |
+| LLM-02 | Phase 1.3 | Pending |
+| LLM-03 | Phase 1.3 | Pending |
+| LLM-04 | Phase 3.1 | Pending |
+| LLM-05 | Phase 1.3 | Pending |
+| LLM-06 | Phase 1.3 | Pending |
+| AUDIT-01 | Phase 1.3 | Pending |
+| AUDIT-02 | Phase 1.3 | Pending |
+| AUDIT-03 | Phase 1.3 | Pending |
+| AUDIT-04 | Phase 1.4 | Pending |
+| AUDIT-05 | Phase 1.3 | Pending |
+| AUDIT-06 | Phase 1.3 | Pending |
+| BUDG-01 | Phase 1.2 | Pending |
+| BUDG-02 | Phase 1.2 | Pending |
+| BUDG-03 | Phase 1.2 | Pending |
+| BUDG-04 | Phase 1.2 | Pending |
+| BUDG-05 | Phase 1.3 | Pending |
+| BUDG-06 | Phase 1.4 | Pending |
+| TOOL-01 | Phase 2.1 | Pending |
+| TOOL-02 | Phase 2.1 | Pending |
+| TOOL-03 | Phase 2.1 | Pending |
+| TOOL-04 | Phase 2.1 | Pending |
+| TOOL-05 | Phase 2.1 | Pending |
+| TOOL-06 | Phase 2.1 | Pending |
+| TOOL-07 | Phase 2.1 | Pending |
+| TOOL-08 | Phase 2.1 | Pending |
+| AGNT-01 | Phase 2.2 | Pending |
+| AGNT-02 | Phase 2.2 | Pending |
+| AGNT-03 | Phase 2.2 | Pending |
+| AGNT-04 | Phase 2.2 | Pending |
+| AGNT-05 | Phase 2.2 | Pending |
+| AGNT-06 | Phase 2.3 | Pending |
+| AGNT-07 | Phase 2.2 | Pending |
+| AGNT-08 | Phase 2.3 | Pending |
+| RAG-01 | Phase 2.2 | Pending |
+| RAG-02 | Phase 2.2 | Pending |
+| RAG-03 | Phase 2.2 | Pending |
+| RAG-04 | Phase 2.2 | Pending |
+| RAG-05 | Phase 2.2 | Pending |
+| RAG-06 | Phase 2.2 | Pending |
+| RAG-07 | Phase 2.3 | Pending |
+| AUTO-01 | Phase 3.1 | Pending |
+| AUTO-02 | Phase 3.1 | Pending |
+| AUTO-03 | Phase 3.1 | Pending |
+| AUTO-04 | Phase 3.1 | Pending |
+| AUTO-05 | Phase 3.1 | Pending |
+| PRMT-01 | Phase 3.1 | Pending |
+| PRMT-02 | Phase 3.1 | Pending |
+| PRMT-03 | Phase 3.1 | Pending |
+| PRMT-04 | Phase 3.1 | Pending |
+| UI-01 | Phase 1.4 | Pending |
+| UI-02 | Phase 1.4 | Pending |
+| UI-03 | Phase 1.4 | Pending |
+| UI-04 | Phase 2.3 | Pending |
+| UI-05 | Phase 3.1 | Pending |
+| UI-06 | Phase 1.4 | Pending |
+| UI-07 | Phase 1.4 | Pending |
+| UI-08 | Phase 2.3 | Pending |
+| UI-09 | Phase 3.2 | Pending |
+| UI-10 | Phase 1.1 | Pending |
+| HOOK-01 | Phase 3.2 | Pending |
+| HOOK-02 | Phase 1.1 | Pending |
+| HOOK-03 | Phase 3.2 | Pending |
+| HOOK-04 | Phase 3.2 | Pending |
+| HOOK-05 | Phase 3.2 | Pending |
+| XCUT-01 | Phase 1.1 | Pending |
+| XCUT-02 | Phase 1.1 | Pending |
+| XCUT-03 | Phase 2.1 | Pending |
+| XCUT-04 | Phase 1.1 | Pending |
+| XCUT-05 | Phase 3.2 | Pending |
+| XCUT-06 | Phase 2.3 | Pending |
+| XCUT-07 | Phase 2.1 | Pending |
+| XCUT-08 | Phase 1.2 | Pending |
+| XCUT-09 | Phase 3.2 | Pending |
+| XCUT-10 | Phase 1.1 | Pending |
 
 **Coverage:**
-- v1 requirements: 86 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 86 ⚠️ (expected before roadmap)
+- v1 requirements: 84 total (PROV 6, MODL 3, LLM 6, AUDIT 6, BUDG 6, TOOL 8, AGNT 8, RAG 7, AUTO 5, PRMT 4, UI 10, HOOK 5, XCUT 10 — note: PROJECT.md's earlier "86" tally was an over-count; actual REQ-ID count is 84)
+- Mapped to phases: 84
+- Unmapped: 0 ✓
+
+**Phase distribution (max 12 per phase enforced):**
+- Phase 1.1: 6 reqs
+- Phase 1.2: 12 reqs
+- Phase 1.3: 12 reqs
+- Phase 1.4: 8 reqs
+- Phase 2.1: 10 reqs
+- Phase 2.2: 12 reqs
+- Phase 2.3: 6 reqs
+- Phase 3.1: 11 reqs
+- Phase 3.2: 7 reqs
 
 ---
 *Requirements defined: 2026-05-21*
-*Last updated: 2026-05-21 after initial definition*
+*Last updated: 2026-05-21 after roadmap creation (traceability populated by roadmapper agent)*

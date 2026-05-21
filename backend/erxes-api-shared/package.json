@@ -50,13 +50,17 @@
     "express-rate-limit": "^8.0.1",
     "node-fetch": "^2.6.7",
     "lodash": "^4.17.21",
+    "@anthropic-ai/tokenizer": "0.0.4",
     "@azure/storage-blob": "^12.29.1",
     "@google-cloud/storage": "^7.17.3",
     "aws-sdk": "^2.1692.0",
     "csv-parse": "^6.2.1",
     "exceljs": "^4.4.0",
     "file-type": "^20.5.0",
-    "form-data": "^4.0.2"
+    "form-data": "^4.0.2",
+    "redact-pii-light": "1.0.0",
+    "tiktoken": "1.0.22",
+    "zod-to-json-schema": "3.23.5"
   },
   "preconstruct": {
     "tsconfig": "tsconfig.lib.json",
@@ -64,13 +68,15 @@
       "./index.ts",
       "./utils/index.ts",
       "./core-types/index.ts",
-      "./core-modules/index.ts"
+      "./core-modules/index.ts",
+      "./ai/index.ts"
     ]
   },
   "files": [
     "dist",
     "core-types",
     "utils",
-    "core-modules"
+    "core-modules",
+    "ai"
   ]
 }

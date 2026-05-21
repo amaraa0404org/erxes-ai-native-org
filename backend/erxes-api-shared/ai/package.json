@@ -1,0 +1,5 @@
+{
+  "main": "dist/erxes-api-shared-ai.cjs.js",
+  "module": "dist/erxes-api-shared-ai.esm.js",
+  "types": "dist/erxes-api-shared-ai.cjs.d.ts"
+}

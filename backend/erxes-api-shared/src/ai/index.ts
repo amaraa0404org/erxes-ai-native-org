@@ -12,6 +12,8 @@ export { encryptSecret, decryptSecret } from './encryption';
 export type { EncryptedEnvelope } from './encryption';
 export { ENCRYPTION_ENVELOPE_VERSION } from './encryption';
 
+export * from './errors';
+
 export {
   redactKey,
   redactPii,

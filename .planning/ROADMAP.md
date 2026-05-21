@@ -68,7 +68,18 @@ Plans:
   5. **Budget race acceptance gate (P2):** `Promise.all([invoke()] × 100)` against a $5 cap results in spend ≤ $5 (Option A) or ≤ $5.50 (Option C); the integration test passes in CI
   6. Setting any workspace budget to $0 causes the next chat call to fail with `BudgetExceededError` and a UI-friendly message linking to `/settings/ai/budgets` — verified by integration test (XCUT-08)
   7. `models` list endpoint surfaces capabilities (chat/embed/vision/tools) and context window per configured provider (MODL-01) — provider adapters never return `apiKey` in `listModels()` output
-**Plans**: TBD
+**Plans:** 9 plans
+
+Plans:
+- [ ] 01.2-01-PLAN.md — Encryption multi-version (Policy A) + errors.ts + provider SDK pins (openai, @anthropic-ai/sdk, @google/genai)
+- [ ] 01.2-02-PLAN.md — Mongoose schemas + model classes (AiProviders, AiModels, AiBudgets, AiProviderTestAudit) + IModels wiring
+- [ ] 01.2-03-PLAN.md — OpenAI + Anthropic + Azure adapters (listModels + testConnection) + PROVIDER_REGISTRY entries
+- [ ] 01.2-04-PLAN.md — Google (@google/genai) + Ollama (raw fetch) + Custom (OpenAI-compat) adapters + registry completion
+- [ ] 01.2-05-PLAN.md — Providers module: CRUD + Test Connection (encryption-at-resolver-boundary + rate-limit + audit)
+- [ ] 01.2-06-PLAN.md — Models module: listModelsForProvider (persisted+live merge) + syncModelsForProvider
+- [ ] 01.2-07-PLAN.md — Budgets module: Redis token bucket (D-02 Option A) + estimate + check + reconcile + release + threshold pubsub
+- [ ] 01.2-08-PLAN.md — Apollo schema + resolvers + tRPC routers wiring (retires _aiPing/_aiNoop placeholders)
+- [ ] 01.2-09-PLAN.md — ERXES_SECRET rotation script + BUDG-04 100-concurrent integration test + P13 CI grep gate + ci-plugin-ai workflow
 
 ### Phase 1.3: LLM API Surface + Audit Log + Observability
 **Goal**: Ship the primary integration surface (`trpc.ai.llm.chat` and `trpc.ai.llm.embed`) every other plugin will call, with provider-native structured output support, sanitized error chains that never leak API keys, exponential backoff on rate limits, an append-only `ai_invocations` audit log written asynchronously through a BullMQ batching worker, and a Prometheus `/metrics` endpoint. Billing tokens come exclusively from `response.usage` (PITFALLS.md §P7 — never tiktoken estimates) and per-provider drift multipliers are documented.
@@ -192,7 +203,7 @@ Phases execute in numeric order: 1.1 → 1.2 → 1.3 → 1.4 → 2.1 → 2.2 →
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1.1. Shared Module + Plugin Scaffolds | 3/3 | Complete   | 2026-05-21 |
-| 1.2. Provider Config + Encryption + Budget Enforcement | 0/TBD | Not started | - |
+| 1.2. Provider Config + Encryption + Budget Enforcement | 0/9 | Not started | - |
 | 1.3. LLM API Surface + Audit Log + Observability | 0/TBD | Not started | - |
 | 1.4. AI Settings UI (Providers, Models, Budgets, Audit) | 0/TBD | Not started | - |
 | 2.1. Tool Registry + Plugin Extension Surface | 0/TBD | Not started | - |

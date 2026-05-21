@@ -232,9 +232,16 @@ describe('types — Zod schemas + ProviderError', () => {
   });
 });
 
-describe('providers — registry is empty in Phase 1.1', () => {
-  it('PROVIDER_REGISTRY exposes an empty Partial<Record<...>>', () => {
-    expect(PROVIDER_REGISTRY).toEqual({});
-    expect(typeof PROVIDER_REGISTRY).toBe('object');
+describe('providers — registry populated with OpenAI family (Phase 1.2 Plan 03)', () => {
+  it('PROVIDER_REGISTRY contains exactly the 3 OpenAI-family factories', () => {
+    // Plan 03 populates openai/anthropic/azure; Plan 04 will append google/ollama/custom.
+    const keys = Object.keys(PROVIDER_REGISTRY).sort();
+    expect(keys).toEqual(['anthropic', 'azure', 'openai']);
+    expect(typeof PROVIDER_REGISTRY.openai).toBe('function');
+    expect(typeof PROVIDER_REGISTRY.anthropic).toBe('function');
+    expect(typeof PROVIDER_REGISTRY.azure).toBe('function');
+    expect(PROVIDER_REGISTRY.google).toBeUndefined();
+    expect(PROVIDER_REGISTRY.ollama).toBeUndefined();
+    expect(PROVIDER_REGISTRY.custom).toBeUndefined();
   });
 });

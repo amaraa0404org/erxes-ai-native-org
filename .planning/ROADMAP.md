@@ -68,11 +68,11 @@ Plans:
   5. **Budget race acceptance gate (P2):** `Promise.all([invoke()] × 100)` against a $5 cap results in spend ≤ $5 (Option A) or ≤ $5.50 (Option C); the integration test passes in CI
   6. Setting any workspace budget to $0 causes the next chat call to fail with `BudgetExceededError` and a UI-friendly message linking to `/settings/ai/budgets` — verified by integration test (XCUT-08)
   7. `models` list endpoint surfaces capabilities (chat/embed/vision/tools) and context window per configured provider (MODL-01) — provider adapters never return `apiKey` in `listModels()` output
-**Plans:** 9 plans
+**Plans:** 2/9 plans executed
 
 Plans:
-- [ ] 01.2-01-PLAN.md — Encryption multi-version (Policy A) + errors.ts + provider SDK pins (openai, @anthropic-ai/sdk, @google/genai)
-- [ ] 01.2-02-PLAN.md — Mongoose schemas + model classes (AiProviders, AiModels, AiBudgets, AiProviderTestAudit) + IModels wiring
+- [x] 01.2-01-PLAN.md — Encryption multi-version (Policy A) + errors.ts + provider SDK pins (openai, @anthropic-ai/sdk, @google/genai)
+- [x] 01.2-02-PLAN.md — Mongoose schemas + model classes (AiProviders, AiModels, AiBudgets, AiProviderTestAudit) + IModels wiring
 - [ ] 01.2-03-PLAN.md — OpenAI + Anthropic + Azure adapters (listModels + testConnection) + PROVIDER_REGISTRY entries
 - [ ] 01.2-04-PLAN.md — Google (@google/genai) + Ollama (raw fetch) + Custom (OpenAI-compat) adapters + registry completion
 - [ ] 01.2-05-PLAN.md — Providers module: CRUD + Test Connection (encryption-at-resolver-boundary + rate-limit + audit)
@@ -203,7 +203,7 @@ Phases execute in numeric order: 1.1 → 1.2 → 1.3 → 1.4 → 2.1 → 2.2 →
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1.1. Shared Module + Plugin Scaffolds | 3/3 | Complete   | 2026-05-21 |
-| 1.2. Provider Config + Encryption + Budget Enforcement | 0/9 | Not started | - |
+| 1.2. Provider Config + Encryption + Budget Enforcement | 2/9 | In Progress|  |
 | 1.3. LLM API Surface + Audit Log + Observability | 0/TBD | Not started | - |
 | 1.4. AI Settings UI (Providers, Models, Budgets, Audit) | 0/TBD | Not started | - |
 | 2.1. Tool Registry + Plugin Extension Surface | 0/TBD | Not started | - |
